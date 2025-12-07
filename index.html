@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigitDigit</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="top-controls">
+        <div id="help-btn" class="icon-btn" title="How to Play">?</div>
+        <div id="settings-btn" class="icon-btn" title="Settings">⚙</div>
+    </div>
+
+    <!-- <div id="main-title">DigitDigit</div> -->
+
+
+    <div id="settings-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-settings">&times;</span>
+            <h2>Key Configuration</h2>
+            <div id="key-config-grid">
+
+            </div>
+            <div id="waiting-key-msg" style="display:none; margin-top: 10px; color: #ffeb3b;">Press any key to bind...
+            </div>
+        </div>
+    </div>
+
+
+    <div id="description-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-description">&times;</span>
+            <h2>Game Description</h2>
+            <p><strong>a</strong> 설명쓰기귀찮아</p>
+        </div>
+    </div>
+
+    <div id="game-container">
+        <div id="player-decimal" class="decimal-display">0</div>
+        <div id="player-binary" class="binary-display">0 0 0 0 0 | 0 0 0 0 0</div>
+        <div id="binary-queue" style="display: none; flex-direction: column; gap: 7px;">
+            <div id="target-1" class="binary-display target-line row-1">0 0 0 0 0 | 0 0 0 0 0</div>
+            <div id="target-2" class="binary-display target-line row-2">0 0 0 0 0 | 0 0 0 0 0</div>
+            <div id="target-3" class="binary-display target-line row-3">0 0 0 0 0 | 0 0 0 0 0</div>
+            <div id="target-4" class="binary-display target-line row-4">0 0 0 0 0 | 0 0 0 0 0</div>
+            <div id="target-5" class="binary-display target-line row-5">0 0 0 0 0 | 0 0 0 0 0</div>
+        </div>
+
+
+
+
+
+        <div
+            style="position: absolute; bottom: 20px; left: 20px; display: flex; flex-direction: column; align-items: flex-start;">
+            <div id="toggle-queue-container" style="margin-bottom: 10px;">
+                <span class="toggle-label">Show Guides</span>
+                <label class="switch">
+                    <input type="checkbox" id="toggle-target-lines"
+                        onchange="document.getElementById('binary-queue').style.display = this.checked ? 'flex' : 'none';">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div id="key-bar-container">
+
+            </div>
+        </div>
+    </div>
+    <script src="digit.js"></script>
+</body>
+
+</html>
