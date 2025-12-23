@@ -12,17 +12,22 @@
 <body>
 
     <div id="top-controls">
+        <div id="mode-btn" class="icon-btn" title="Game Modes">🎮</div>
         <div id="help-btn" class="icon-btn" title="How to Play">?</div>
         <div id="settings-btn" class="icon-btn" title="Settings">⚙</div>
     </div>
-
-    <!-- <div id="main-title">DigitDigit</div> -->
 
 
     <div id="settings-modal" class="modal">
         <div class="modal-content">
             <span class="close-modal" id="close-settings">&times;</span>
             <h2>Key Configuration</h2>
+            <div class="settings-tabs">
+                <button class="tab-btn active" data-tab="standard">Standard / Instant</button>
+                <button class="tab-btn" data-tab="quarter">Quarter</button>
+                <button class="tab-btn" data-tab="root">Root</button>
+                <button class="tab-btn" data-tab="timed">Timed</button>
+            </div>
             <div id="key-config-grid">
 
             </div>
@@ -40,36 +45,63 @@
         </div>
     </div>
 
-    <div id="game-container">
-        <div id="player-decimal" class="decimal-display">0</div>
-        <div id="player-binary" class="binary-display">0 0 0 0 0 | 0 0 0 0 0</div>
-        <div id="binary-queue" style="display: none; flex-direction: column; gap: 7px;">
-            <div id="target-1" class="binary-display target-line row-1">0 0 0 0 0 | 0 0 0 0 0</div>
-            <div id="target-2" class="binary-display target-line row-2">0 0 0 0 0 | 0 0 0 0 0</div>
-            <div id="target-3" class="binary-display target-line row-3">0 0 0 0 0 | 0 0 0 0 0</div>
-            <div id="target-4" class="binary-display target-line row-4">0 0 0 0 0 | 0 0 0 0 0</div>
-            <div id="target-5" class="binary-display target-line row-5">0 0 0 0 0 | 0 0 0 0 0</div>
-        </div>
-
-
-
-
-
-        <div
-            style="position: absolute; bottom: 20px; left: 20px; display: flex; flex-direction: column; align-items: flex-start;">
-            <div id="toggle-queue-container" style="margin-bottom: 10px;">
-                <span class="toggle-label">Show Guides</span>
-                <label class="switch">
-                    <input type="checkbox" id="toggle-target-lines"
-                        onchange="document.getElementById('binary-queue').style.display = this.checked ? 'flex' : 'none';">
-                    <span class="slider round"></span>
-                </label>
-            </div>
-            <div id="key-bar-container">
-
+    <div id="gamemode-modal" class="modal">
+        <div class="modal-content mode-selection-content">
+            <span class="close-modal" id="close-gamemode">&times;</span>
+            <h2>Mode</h2>
+            <div class="mode-grid">
+                <div class="mode-card active" data-mode="standard">
+                    <h3>Standard</h3>
+                    <p>10-digit</p>
+                </div>
+                <div class="mode-card" data-mode="quarter">
+                    <h3>Quarter</h3>
+                    <p>8-digit</p>
+                </div>
+                <div class="mode-card" data-mode="root">
+                    <h3>Root</h3>
+                    <p>5-digit</p>
+                </div>
+                <div class="mode-card" data-mode="timed">
+                    <h3>Timed</h3>
+                    <p>8-digit, 10 seconds challenge!</p>
+                </div>
+                <div class="mode-card" data-mode="instant">
+                    <h3>Instant</h3>
+                    <p>The binary number you enter is converted to decimal.</p>
+                </div>
             </div>
         </div>
     </div>
+
+    <div id="result-screen" class="result-content" style="display: none;">
+        <h3 id="result-mode"
+            style="margin: 0; color: #B0BEC5; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px;">
+            STANDARD</h3>
+        <h2 id="result-title">CLEARED!</h2>
+        <div id="result-score" class="result-score">10.123s</div>
+        <div id="result-subtext" class="result-subtext"></div>
+        <div id="result-ips"
+            style="font-size: 1.2rem; color: #29B6F6; margin-top: -30px; margin-bottom: 40px; font-weight: bold;"></div>
+
+        <div class="result-actions">
+            <button id="restart-btn" class="action-btn">Restart</button>
+            <button id="share-btn" class="action-btn">Share</button>
+        </div>
+    </div>
+
+    <div id="game-container">
+        <div id="timer">0.000s</div>
+        <div id="player-decimal" class="decimal-display">0</div>
+        <div id="player-binary" class="binary-display">0 0 0 0 0 | 0 0 0 0 0</div>
+
+    </div>
+
+    <div id="key-bar-wrapper" style="position: fixed; bottom: 20px; left: 20px; z-index: 1000;">
+        <div id="key-bar-container">
+        </div>
+    </div>
+
     <script src="digit.js"></script>
 </body>
 
