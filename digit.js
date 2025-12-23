@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             text = `[DigitDigit] Cleared ${modeName} mode in ${score}! (${ips}) 🎯\nThink you can do better?`;
         }
-        text += `\nhttps://teoookr.github.io/digitdigit`;
+        text += `\nhttps://teoookr.github.io/DigitDigit`;
 
         navigator.clipboard.writeText(text).then(() => {
             const originalText = shareBtn.textContent;
