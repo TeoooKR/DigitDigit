@@ -28,7 +28,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    let KEY_CONFIGS = JSON.parse(JSON.stringify(DEFAULT_KEY_MAPS));
+
+    const storage_key_configs = localStorage.getItem("key-configs");
+    let KEY_CONFIGS;
+    if (storage_key_configs !== null) {
+        KEY_CONFIGS = JSON.parse(storage_key_configs);
+    } else {
+        KEY_CONFIGS = JSON.parse(JSON.stringify(DEFAULT_KEY_MAPS));
+    }
+
+
 
     function getCurrentKeyMap() {
         if (currentMode === 'instant') return KEY_CONFIGS['standard'];
@@ -331,6 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             map[newKey] = remapIndex;
 
+
             if (conflictingIndex !== undefined && conflictingIndex !== remapIndex) {
                 if (oldKey) {
                     map[oldKey] = conflictingIndex;
@@ -341,7 +351,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
+            localStorage.setItem("key-configs", JSON.stringify(KEY_CONFIGS));
+
+
+
             renderKeyGrid();
+
 
             if (currentConfigTab === currentMode || (currentConfigTab === 'standard' && currentMode === 'instant')) {
                 renderKeyBar();
