@@ -138,6 +138,29 @@ html {
     text-align: center;
 }
 
+.description-body {
+    text-align: left;
+    padding: 0 10px;
+}
+
+.description-body h3 {
+    color: #29B6F6;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.description-body ul {
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.description-body li {
+    margin-bottom: 8px;
+    color: #ECEFF1;
+    line-height: 1.5;
+}
+
 .close-modal {
     position: absolute;
     top: 10px;

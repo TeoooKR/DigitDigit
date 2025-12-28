@@ -7,7 +7,14 @@ document.addEventListener('DOMContentLoaded', () => {
         instant: { bitCount: 10, maxVal: Infinity }
     };
 
-    let currentMode = 'standard';
+    let currentMode;
+
+    if (localStorage.getItem("current-mode") != null) {
+        currentMode = localStorage.getItem("current-mode");
+    } else {
+        currentMode = "standard";
+    }
+
     let currentConfigTab = 'standard';
 
     const DEFAULT_KEY_MAPS = {
@@ -31,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const storage_key_configs = localStorage.getItem("key-configs");
     let KEY_CONFIGS;
-    if (storage_key_configs !== null) {
+    if (storage_key_configs != null) {
         KEY_CONFIGS = JSON.parse(storage_key_configs);
     } else {
         KEY_CONFIGS = JSON.parse(JSON.stringify(DEFAULT_KEY_MAPS));
@@ -128,6 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
             currentMode = card.dataset.mode;
             closeModal(gamemodeModal);
             initGame();
+            localStorage.setItem("current-mode", currentMode);
         });
     });
 
